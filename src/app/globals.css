@@ -3,11 +3,93 @@
 @theme inline {
   --font-sans: var(--font-inter);
   --font-serif: var(--font-newsreader);
+  --font-display: var(--font-newsreader);
+
+  /* Color tokens từ design gốc */
+  --color-primary: #003629;
+  --color-primary-container: #1b4d3e;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #8abda9;
+  --color-primary-fixed: #baeed9;
+  --color-primary-fixed-dim: #9ed1bd;
+  --color-on-primary-fixed: #002117;
+  --color-on-primary-fixed-variant: #1d4f40;
+  --color-inverse-primary: #9ed1bd;
+
+  --color-secondary: #735a31;
+  --color-secondary-container: #fddba7;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #785f35;
+  --color-secondary-fixed: #ffdeac;
+  --color-secondary-fixed-dim: #e3c290;
+  --color-on-secondary-fixed: #281900;
+  --color-on-secondary-fixed-variant: #59431c;
+
+  --color-tertiary: #4c221c;
+  --color-tertiary-container: #673831;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #e4a399;
+  --color-tertiary-fixed: #ffdad5;
+  --color-tertiary-fixed-dim: #fab6ac;
+  --color-on-tertiary-fixed: #34100b;
+  --color-on-tertiary-fixed-variant: #693a33;
+
+  --color-surface: #f9f9f9;
+  --color-surface-dim: #dadada;
+  --color-surface-bright: #f9f9f9;
+  --color-surface-variant: #e2e2e2;
+  --color-surface-container: #eeeeee;
+  --color-surface-container-low: #f3f3f3;
+  --color-surface-container-high: #e8e8e8;
+  --color-surface-container-highest: #e2e2e2;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-tint: #376757;
+
+  --color-on-surface: #1a1c1c;
+  --color-on-surface-variant: #404945;
+  --color-inverse-surface: #2f3131;
+  --color-inverse-on-surface: #f1f1f1;
+
+  --color-background: #f9f9f9;
+  --color-on-background: #1a1c1c;
+
+  --color-outline: #707974;
+  --color-outline-variant: #c0c9c3;
+
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+
+  /* Gold accent */
+  --color-gold: #D4B483;
+
+  /* Border radius từ design gốc */
+  --radius-DEFAULT: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
+}
+
+/* Material Symbols */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Hero gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, #003629 0%, #4A4A4A 100%);
+}
+
+/* Glass effect */
+.glass-effect {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 /* Prose styles cho bài viết */
-.prose h2 { font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; }
-.prose h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+.prose h2 { font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #003629; font-family: var(--font-newsreader); }
+.prose h3 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #003629; }
 .prose p { margin-bottom: 1.25rem; line-height: 1.8; color: #404945; }
 .prose img { border-radius: 0.75rem; width: 100%; }
 .prose ul, .prose ol { padding-left: 1.5rem; margin-bottom: 1.25rem; }

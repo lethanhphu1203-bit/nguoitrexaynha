@@ -17,7 +17,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="vi" className={`${inter.variable} ${newsreader.variable}`}>
-      <body className="font-sans antialiased bg-[#f9f9f9] text-gray-900 min-h-screen">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="font-sans antialiased bg-[#f9f9f9] text-[#1a1c1c] min-h-screen">
         {children}
       </body>
     </html>
