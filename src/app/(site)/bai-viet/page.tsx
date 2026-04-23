@@ -6,11 +6,12 @@ export const revalidate = 60
 export const metadata = { title: 'Bài viết | Nguoi Tre Xay Nha' }
 
 export default async function BaiVietSitePage() {
-  const { data: items } = await supabaseAdmin
+  const { data: _items } = await supabaseAdmin
     .from('bai_viet')
     .select('id, tieu_de, slug, mo_ta, anh_dai_dien, tac_gia, published_at, danh_muc(ten)')
     .eq('trang_thai', 'xuat-ban')
     .order('published_at', { ascending: false })
+  const items = _items as any[]
 
   return (
     <div className="pt-16">

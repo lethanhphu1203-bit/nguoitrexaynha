@@ -6,11 +6,12 @@ export const revalidate = 60
 export const metadata = { title: 'Dự án | Nguoi Tre Xay Nha' }
 
 export default async function DuAnSitePage() {
-  const { data: items } = await supabaseAdmin
+  const { data: _items } = await supabaseAdmin
     .from('du_an')
     .select('id, ten, slug, mo_ta, anh_dai_dien, quan_huyen, thanh_pho, gia_tu, trang_thai, danh_muc(ten)')
     .in('trang_thai', ['xuat-ban', 'hoan-thanh'])
     .order('thu_tu')
+  const items = _items as any[]
 
   return (
     <div className="pt-16">

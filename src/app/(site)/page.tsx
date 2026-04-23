@@ -27,7 +27,9 @@ async function getData() {
 }
 
 export default async function HomePage() {
-  const { duAnNoiBat, baiVietMoi } = await getData()
+  const { duAnNoiBat: _duAn, baiVietMoi: _baiViet } = await getData()
+  const duAnNoiBat = _duAn as any[]
+  const baiVietMoi = _baiViet as any[]
 
   const featured = baiVietMoi[0]
   const subNews = baiVietMoi.slice(1, 4)
