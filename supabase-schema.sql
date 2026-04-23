@@ -6,6 +6,15 @@
 -- Bật extension uuid
 create extension if not exists "uuid-ossp";
 
+-- Xoá bảng cũ nếu có (đúng thứ tự để tránh lỗi foreign key)
+drop table if exists bai_viet cascade;
+drop table if exists du_an cascade;
+drop table if exists banners cascade;
+drop table if exists menu_items cascade;
+drop table if exists lien_he cascade;
+drop table if exists cau_hinh cascade;
+drop table if exists danh_muc cascade;
+
 -- =============================================
 -- 1. DANH MỤC (Categories)
 -- =============================================
@@ -137,9 +146,7 @@ insert into cau_hinh (khoa, gia_tri, mo_ta, nhom) values
   ('google_analytics', '', 'Google Analytics ID', 'seo'),
   ('meta_keywords', '', 'Meta keywords mặc định', 'seo');
 
--- =============================================
 -- Menu mặc định
--- =============================================
 insert into menu_items (ten, duong_dan, vi_tri, thu_tu) values
   ('Trang chủ', '/', 'header', 1),
   ('Dự án', '/du-an', 'header', 2),
@@ -148,9 +155,7 @@ insert into menu_items (ten, duong_dan, vi_tri, thu_tu) values
   ('Về chúng tôi', '/gioi-thieu', 'footer', 1),
   ('Chính sách bảo mật', '/chinh-sach-bao-mat', 'footer', 2);
 
--- =============================================
 -- Danh mục mặc định
--- =============================================
 insert into danh_muc (ten, slug, loai, thu_tu) values
   ('Kiến trúc đương đại', 'kien-truc-duong-dai', 'bai-viet', 1),
   ('Nội thất', 'noi-that', 'bai-viet', 2),
@@ -164,13 +169,19 @@ insert into danh_muc (ten, slug, loai, thu_tu) values
 -- =============================================
 -- Storage bucket cho ảnh
 -- =============================================
-insert into storage.buckets (id, name, public) values ('media', 'media', true);
+insert into storage.buckets (id, name, public)
+values ('media', 'media', true)
+on conflict (id) do nothing;
 
--- Policy: cho phép public đọc ảnh
+-- Policies (xoá cũ trước nếu có)
+drop policy if exists "Public read media" on storage.objects;
+drop policy if exists "Auth upload media" on storage.objects;
+drop policy if exists "Auth update media" on storage.objects;
+drop policy if exists "Auth delete media" on storage.objects;
+
 create policy "Public read media" on storage.objects
   for select using (bucket_id = 'media');
 
--- Policy: cho phép upload (sẽ kiểm soát qua service role key)
 create policy "Auth upload media" on storage.objects
   for insert with check (bucket_id = 'media');
 
@@ -190,6 +201,9 @@ begin
   return new;
 end;
 $$ language plpgsql;
+
+drop trigger if exists bai_viet_updated_at on bai_viet;
+drop trigger if exists du_an_updated_at on du_an;
 
 create trigger bai_viet_updated_at
   before update on bai_viet
