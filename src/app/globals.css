@@ -96,3 +96,34 @@
 .prose li { margin-bottom: 0.4rem; line-height: 1.7; color: #404945; }
 .prose a { color: #003629; text-decoration: underline; }
 .prose blockquote { border-left: 3px solid #003629; padding-left: 1rem; color: #707974; font-style: italic; margin: 1.5rem 0; }
+
+/* Article content styles */
+.article-content p {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  color: #404945;
+}
+.article-content h2 { font-size: 1.5rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #003629; font-family: var(--font-newsreader); }
+.article-content h3 { font-size: 1.25rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.5rem; color: #003629; }
+.article-content img { border-radius: 0.75rem; width: 100%; margin: 1.5rem 0; }
+.article-content ul, .article-content ol { padding-left: 1.5rem; margin-bottom: 1.5rem; }
+.article-content li { margin-bottom: 0.5rem; line-height: 1.8; color: #404945; font-size: 1.125rem; }
+.article-content a { color: #003629; text-decoration: underline; }
+.article-content blockquote {
+  margin: 3rem 0;
+  padding: 1rem 2rem;
+  border-left: 4px solid #735a31;
+}
+.article-content blockquote p {
+  font-family: var(--font-newsreader);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: #1b4d3e;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* No scrollbar for horizontal scroll sections */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
